@@ -338,7 +338,7 @@ print('Using memory of type: ' + memory.__class__.__name__)
 
 # Interaction Loop
 while True:
-    # Send message to AI, get response
+    #*SECTION - Send message to CyberOne, get response
     with Spinner("Thinking... "):
         assistant_reply = chat.chat_with_ai(
             prompt,
@@ -347,10 +347,10 @@ while True:
             memory,
             cfg.fast_token_limit) # TODO: This hardcodes the model to use GPT3.5. Make this an argument
 
-    # Print Assistant thoughts
+    #*SECTION - Print Assistant thoughts
     print_assistant_thoughts(assistant_reply)
 
-    # Get command name and arguments
+    #*SECTION - Get command name and arguments
     try:
         command_name, arguments = cmd.get_command(attempt_to_fix_json_by_finding_outermost_brackets(assistant_reply))
         if cfg.speak_mode:
@@ -406,7 +406,7 @@ while True:
             Fore.CYAN,
             f"COMMAND = {Fore.CYAN}{command_name}{Style.RESET_ALL}  ARGUMENTS = {Fore.CYAN}{arguments}{Style.RESET_ALL}")
 
-    # Execute command
+    #*SECTION - Execute command
     if command_name is not None and command_name.lower().startswith( "error" ):
         result = f"Command {command_name} threw the following error: " + arguments
     elif command_name == "human_feedback":
@@ -419,11 +419,9 @@ while True:
     memory_to_add = f"Assistant Reply: {assistant_reply} " \
                     f"\nResult: {result} " \
                     f"\nHuman Feedback: {user_input} "
-
     memory.add(memory_to_add)
 
-    # Check if there's a result from the command append it to the message
-    # history
+    #*SECTION - Check if there's a result from the command append it to the message history
     if result is not None:
         full_message_history.append(chat.create_chat_message("system", result))
         logger.typewriter_log("SYSTEM: ", Fore.YELLOW, result)
