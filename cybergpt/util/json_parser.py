@@ -1,6 +1,6 @@
 import json
 from typing import Any, Dict, Union
-from call_ai_function import call_ai_function
+from agent.call_ai_function import call_ai_function
 from config import Config
 from json_utils import correct_json
 from logger import logger

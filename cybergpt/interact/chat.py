@@ -1,10 +1,10 @@
 import time
 import openai
 from dotenv import load_dotenv
-from config import Config
-import token_counter
-from llm_utils import create_chat_completion
-from logger import logger
+from util.config import Config
+import util.token_counter
+from util.llm_utils import create_chat_completion
+from util.logger import logger
 import logging
 
 cfg = Config()

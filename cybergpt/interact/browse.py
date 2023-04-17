@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
-from config import Config
-from llm_utils import create_chat_completion
+from util.config import Config
+from util.llm_utils import create_chat_completion
 from urllib.parse import urlparse, urljoin
 
 cfg = Config()

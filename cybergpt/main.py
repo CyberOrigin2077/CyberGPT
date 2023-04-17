@@ -1,22 +1,26 @@
 import json
-import random
-import commands as cmd
-import utils
-from memory import get_memory, get_supported_memory_backends
 import data
-import chat
-from colorama import Fore, Style
-from spinner import Spinner
+import random
 import time
-import speak
-from config import Config
-from json_parser import fix_and_parse_json
-from ai_config import AIConfig
+import logging
 import traceback
 import yaml
 import argparse
-from logger import logger
-import logging
+
+from memory import get_memory, get_supported_memory_backends
+from colorama import Fore, Style
+
+from agent.ai_config import AIConfig
+
+from interact import commands as cmd
+from interact import speak
+from interact import chat
+
+from util import utils
+from util.spinner import Spinner
+from util.config import Config
+from util.json_parser import fix_and_parse_json
+from util.logger import logger
 
 cfg = Config()
 
@@ -125,7 +129,6 @@ def print_assistant_thoughts(assistant_reply):
         call_stack = traceback.format_exc()
         logger.error("Error: \n", call_stack)
 
-
 def load_variables(config_file="config.yaml"):
     """Load variables from yaml file if it exists, otherwise prompt the user for input"""
     try:
@@ -179,7 +182,6 @@ def load_variables(config_file="config.yaml"):
     full_prompt += f"\n\n{prompt}"
     return full_prompt
 
-
 def construct_prompt():
     """Construct the prompt for the AI to respond to"""
     config = AIConfig.load()
@@ -207,7 +209,6 @@ Continue (y/n): """)
 
     full_prompt = config.construct_full_prompt()
     return full_prompt
-
 
 def prompt_user():
     """Prompt the user for input"""
@@ -314,7 +315,6 @@ def parse_arguments():
             print_to_console(f"Defaulting to: ", Fore.YELLOW, cfg.memory_backend)
         else:
             cfg.memory_backend = chosen
-
 
 # TODO: fill in llm values here
 check_openai_api_key()
