@@ -338,7 +338,7 @@ print('Using memory of type: ' + memory.__class__.__name__)
 
 # Interaction Loop
 while True:
-    #*SECTION - Send message to CyberOne, get response
+    #*SECTION - Send message to CyberGPT, get response
     with Spinner("Thinking... "):
         assistant_reply = chat.chat_with_ai(
             prompt,

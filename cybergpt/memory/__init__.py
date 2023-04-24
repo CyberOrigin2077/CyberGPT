@@ -5,14 +5,15 @@ from .local import LocalCache
 supported_memory = ['local']
 
 try:
-    from memory.redismem import RedisMemory
+    
+    from .redismem import RedisMemory
     supported_memory.append('redis')
 except ImportError:
     print("Redis not installed. Skipping import.")
     RedisMemory = None
 
 try:
-    from memory.pinecone import PineconeMemory
+    from .pinecone import PineconeMemory
     supported_memory.append('pinecone')
 except ImportError:
     print("Pinecone not installed. Skipping import.")

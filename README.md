@@ -6,10 +6,10 @@ This repo is based on ChatGPT and AutoGPT to achieve General Robotic System for 
 
 In this Repo, we will assume the robots cover the basic functional ability in long-term localization and mapping, 3D perception and exploration modules which we developed under the MetaSLAM organization:
 
-1. [AutoMerge](https://github.com/MetaSLAM/AutoMerge_Server), which is a crowdsourced mapping package for multi-agent mapping and localization.
-2. [iSimLoc](https://github.com/MetaSLAM/iSimLocServer), which is a UAV localization system with Google Satelite Images without GPS.
-3. [BioSLAM](https://github.com/MetaSLAM/BioSLAM_server), which is a lifelong learning system for incremental perception.
-4. [MUI-TARE](https://github.com/MetaSLAM/MUI-TARE_Server), which is a multi-agent exploration approach.
+1. [AutoLoc](https://github.com/MetaSLAM/iSimLocServer) is a general localization system supports different sensors (Camera and LiDAR) for long-term and large-scale navigation.
+2. [AutoMerge](https://github.com/MetaSLAM/AutoMerge_Server) is a general crowdsourced mapping library for city-scale 3D high-resolution mapping under both indoor/outdoor envs.
+3. [MrExplorer](https://github.com/MetaSLAM/MUI-TARE_Server) is a general planning library for large-scale single/multi-agent exploration with real-time dynamic decision making.
+4. [BioMemory](https://github.com/MetaSLAM/BioSLAM_server) is a lifelong memory system with long-short-term memorization for incremental improving on perceptioon and naivgaiotn.
 
 Our vision is to enhance the Field of robotics ability and help robots to invole into our daily life for more challenging tasks. For the more detail, please refer to our website:
 
