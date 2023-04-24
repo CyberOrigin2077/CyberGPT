@@ -1,6 +1,6 @@
 """Base class for memory providers."""
 import abc
-from config import AbstractSingleton, Config
+from ..util.config import AbstractSingleton, Config
 import openai
 cfg = Config()
 

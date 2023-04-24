@@ -1,1 +1,1 @@
-from cybergpt.main import main
+from cybergpt import main

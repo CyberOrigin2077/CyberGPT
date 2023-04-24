@@ -1,6 +1,6 @@
 import yaml
-import data
 import os
+from ..util import data
 
 class AIConfig:
     """

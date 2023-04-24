@@ -1,5 +1,4 @@
 import json
-import data
 import random
 import time
 import logging
@@ -7,20 +6,21 @@ import traceback
 import yaml
 import argparse
 
-from memory import get_memory, get_supported_memory_backends
+from .memory import get_memory, get_supported_memory_backends
 from colorama import Fore, Style
 
-from agent.ai_config import AIConfig
+from .agent.ai_config import AIConfig
 
-from interact import commands as cmd
-from interact import speak
-from interact import chat
+from .interact import commands as cmd
+from .interact import speak
+from .interact import chat
 
-from util import utils
-from util.spinner import Spinner
-from util.config import Config
-from util.json_parser import fix_and_parse_json
-from util.logger import logger
+from .util import utils
+from .util import data
+from .util.spinner import Spinner
+from .util.config import Config
+from .util.json_parser import fix_and_parse_json
+from .util.logger import logger
 
 cfg = Config()
 

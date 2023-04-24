@@ -1,21 +1,22 @@
-import browse
 import json
-from memory import get_memory
 import datetime
-import agent_manager as agents
-import speak
-from config import Config
-import ai_functions as ai
-from file_operations import read_file, write_to_file, append_to_file, delete_file, search_files
-from execute_code import execute_python_file
-from json_parser import fix_and_parse_json
-from image_gen import generate_image
+
+from . import browse, speak
+from .execute_code import execute_python_file
+
+from ..memory import get_memory
+from ..agent import agent_manager as agents
+from ..agent import ai_functions as ai
+from ..util.config import Config
+from ..util.json_parser import fix_and_parse_json
+from ..util.image_gen import generate_image
+from ..util.file_operations import read_file, write_to_file, append_to_file, delete_file, search_files
+
 from duckduckgo_search import ddg
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 
 cfg = Config()
-
 
 def is_valid_int(value):
     try:
