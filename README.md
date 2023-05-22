@@ -6,10 +6,11 @@ This repo is based on ChatGPT and AutoGPT to achieve General Robotic System for 
 
 In this Repo, we will assume the robots cover the basic functional ability in long-term localization and mapping, 3D perception and exploration modules which we developed under the MetaSLAM organization:
 
-1. [AutoLoc](https://github.com/MetaSLAM/iSimLocServer) is a general localization system supports different sensors (Camera and LiDAR) for long-term and large-scale navigation.
-2. [AutoMerge](https://github.com/MetaSLAM/AutoMerge_Server) is a general crowdsourced mapping library for city-scale 3D high-resolution mapping under both indoor/outdoor envs.
-3. [MrExplorer](https://github.com/MetaSLAM/MUI-TARE_Server) is a general planning library for large-scale single/multi-agent exploration with real-time dynamic decision making.
-4. [BioMemory](https://github.com/MetaSLAM/BioSLAM_server) is a lifelong memory system with long-short-term memorization for incremental improving on perceptioon and naivgaiotn.
+1. [AutoDriver_Docker](https://github.com/MetaSLAM/iSimLocServer) is a general driver library that can automatic analysis the required libraries for your system.
+2. [AutoMerge_Docker](https://github.com/MetaSLAM/AutoMerge_Docker) is a general crowdsourced mapping and localization library for long-term and large-scale navigation.
+3. [AutoExplorer_Docker](https://github.com/MetaSLAM/AutoExplorer_Docker) is a general planning library for large-scale single/multi-agent terrain analysis and local/global path planning.
+4. [AutoMemory_Docker](https://github.com/MetaSLAM/AutoMemory_Docker) is a lifelong memory system with long-short-term memorization for incremental improving on perceptioon and naivgaiotn.
+5. [AutoArm_Docker](https://github.com/MetaSLAM/AutoArm_Docker) is a lifelong memory system with long-short-term memorization for incremental improving on perceptioon and naivgaiotn.
 
 Our vision is to enhance the Field of robotics ability and help robots to invole into our daily life for more challenging tasks. For the more detail, please refer to our website:
 
