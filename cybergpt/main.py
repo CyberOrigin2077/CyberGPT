@@ -323,7 +323,6 @@ parse_arguments()
 logger.set_level(logging.DEBUG if cfg.debug_mode else logging.INFO)
 ai_name = ""
 prompt = construct_prompt()
-# print(prompt)
 # Initialize variables
 full_message_history = []
 result = None
@@ -338,6 +337,7 @@ print('Using memory of type: ' + memory.__class__.__name__)
 
 # Interaction Loop
 while True:
+    
     #*SECTION - Send message to CyberGPT, get response
     with Spinner("Thinking... "):
         assistant_reply = chat.chat_with_ai(
@@ -345,7 +345,7 @@ while True:
             user_input,
             full_message_history,
             memory,
-            cfg.fast_token_limit) # TODO: This hardcodes the model to use GPT3.5. Make this an argument
+            cfg.fast_token_limit)
 
     #*SECTION - Print Assistant thoughts
     print_assistant_thoughts(assistant_reply)
