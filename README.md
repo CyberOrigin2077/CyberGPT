@@ -10,7 +10,7 @@ In this Repo, we will assume the robots cover the basic functional ability in lo
 2. [AutoMerge_Docker](https://github.com/MetaSLAM/AutoMerge_Docker) is a general crowdsourced mapping and localization library for long-term and large-scale navigation.
 3. [AutoExplorer_Docker](https://github.com/MetaSLAM/AutoExplorer_Docker) is a general planning library for large-scale single/multi-agent terrain analysis and local/global path planning.
 4. [AutoMemory_Docker](https://github.com/MetaSLAM/AutoMemory_Docker) is a lifelong memory system with long-short-term memorization for incremental improving on perceptioon and naivgaiotn.
-5. [AutoArm_Docker](https://github.com/MetaSLAM/AutoArm_Docker) is a lifelong memory system with long-short-term memorization for incremental improving on perceptioon and naivgaiotn.
+5. [AutoGUI_Docker](https://github.com/MetaSLAM/AutoArm_Docker) is a flexible GUI interface that can smooth the interaction between human operators and robots.
 
 Our vision is to enhance the Field of robotics ability and help robots to invole into our daily life for more challenging tasks. For the more detail, please refer to our website:
 
