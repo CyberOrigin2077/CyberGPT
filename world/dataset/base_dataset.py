@@ -18,7 +18,7 @@ class BaseDataset():
     Base class for all cyber datasets, provides some common functionality.
     '''
     def __init__(self, path):
-        self.path = path
+        self.dataset_path = path
         self.episodes_discription = self.get_episode_description(path)
     
     @staticmethod
@@ -124,7 +124,7 @@ class BaseDataset():
             video_ts = vmetadata.strip('[').strip('\'').strip(']').replace("'", "").split(',')
             video_ts = [float(v) for v in video_ts]
             vframes = VideoReader(modality_file, ctx=cpu(0))[:].asnumpy()
-            return {'timestamps': video_ts, 'frame': vframes}
+            return {'timestamps': video_ts, 'frames': vframes}
         
         elif modality_file.split('.')[-1] == 'csv':
             # load csv
@@ -259,7 +259,6 @@ class BaseMultifolderDataset(BaseDataset):
     Base class for all cyber datasets that are split into multiple folders, provides some common functionality.
     '''
     def __init__(self, path):
-        super.__init__()
         self.path = path
         self.subpaths = os.listdir(path)
         self.episodes_description = []
@@ -267,5 +266,5 @@ class BaseMultifolderDataset(BaseDataset):
             dataset_path = os.path.join(path, subpath)
             subepisodes_description = self.get_episode_description(dataset_path)
             subepisodes_description['dataset_path'] = dataset_path
-            self.episodes_discription.append(subepisodes_description)
+            self.episodes_description.append(subepisodes_description)
         self.episodes_description = pd.concat(self.episodes_description, ignore_index=True)

@@ -7,9 +7,9 @@ class VideoDataset(BaseMultifolderDataset):
     
     def __getitem__(self, idx):
         # we only want the video frames (as a NxHxWxC numpy array)
-        epid = self.episode_discription.loc[idx]['episode_id']
+        epid = self.episodes_description.loc[idx]['episode_id']
         dataset_path = self.episodes_description.loc[idx]['dataset_path']
-        vframes = self.load_modality_data(epid, 'color', dataset_path)['data']
+        vframes = self.load_modality_data(epid, 'color', dataset_path)['frames']
         # apply transform if any
         if self.transform:
             vframes = self.transform(vframes)
