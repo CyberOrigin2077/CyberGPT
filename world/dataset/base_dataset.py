@@ -19,7 +19,7 @@ class BaseDataset():
     '''
     def __init__(self, path):
         self.dataset_path = path
-        self.episodes_discription = self.get_episode_description(path)
+        self.episodes_description = self.get_episode_description(path)
     
     @staticmethod
     def get_episode_description(dataset_path):
@@ -36,15 +36,15 @@ class BaseDataset():
         pd.DataFrame
             A DataFrame containing the episode_id, duration, num_modalities, metadata and modalities for each episode.
         '''
-        episode_discription_path = os.path.join(dataset_path, 'episodes.csv')
-        if not os.path.exists(episode_discription_path):
+        episode_description_path = os.path.join(dataset_path, 'episodes.csv')
+        if not os.path.exists(episode_description_path):
             return pd.DataFrame(columns=['episode_id', 'duration', 'num_modalities', 'metadata', 'modalities'])
-        episodes_discription = pd.read_csv(episode_discription_path)
+        episodes_description = pd.read_csv(episode_description_path)
         def convert_json(data):
             return json.loads(data.replace(';', ',').replace('\'', '"'))
-        episodes_discription['modalities'] = episodes_discription['modalities'].apply(convert_json)
-        episodes_discription['metadata'] = episodes_discription['metadata'].apply(convert_json)
-        return episodes_discription
+        episodes_description['modalities'] = episodes_description['modalities'].apply(convert_json)
+        episodes_description['metadata'] = episodes_description['metadata'].apply(convert_json)
+        return episodes_description
 
     @classmethod
     def load_all_modalities(cls, episode_description, dataset_path):
@@ -249,7 +249,7 @@ class BaseDataset():
         
 
     def __len__(self):
-        return len(self.episodes_discription)
+        return len(self.episodes_description)
 
     def __getitem__(self, idx):
         raise NotImplementedError
