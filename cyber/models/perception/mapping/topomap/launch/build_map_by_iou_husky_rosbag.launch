@@ -1,0 +1,15 @@
+<launch>
+  <arg name="path_to_gt_map" default=""/>
+  <arg name="path_to_save_json" default="/home/kirill/TopoSLAM/toposlam_ws/src/simple_toposlam_model/graph_jsons_new/husky_rosbag.json"/>
+  <arg name="config_file" default="husky_rosbag_two_realsenses.yaml"/>
+
+  <node pkg="prism_topomap" type="prism_topomap_node.py" name="prism_topomap_node" output="screen">
+    <param name="path_to_gt_map" value="$(arg path_to_gt_map)"/>
+    <param name="path_to_save_json" value="$(arg path_to_save_json)"/>
+    <param name="config_file" value="$(arg config_file)"/>
+  </node>
+
+  <!-- node pkg="image_transport" type="republish" name="decompress_front_image" args="compressed in:=/zed_node/left/image_rect_color raw out:=/zed_node/left/image_rect_color"/ -->
+  <node pkg="image_transport" type="republish" name="decompress_front_image" args="compressed in:=/realsense_gripper/color/image_raw raw out:=/realsense_gripper/color/image_raw"/>
+  <node pkg="image_transport" type="republish" name="decompress_back_image" args="compressed in:=/realsense_back/color/image_raw raw out:=/realsense_back/color/image_raw"/>
+</launch>

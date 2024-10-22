@@ -1,0 +1,58 @@
+encoder:
+  class_path: cyber.models.world.autoencoder.VQModel
+  init_args:
+    in_channels: 3
+    z_channels: 18
+    out_channels: 3
+    base_channels: 128
+    ch_mult:
+    - 1
+    - 1
+    - 2
+    - 2
+    - 4
+    num_res_blocks: 2
+    disc_conditional: false
+    disc_in_channels: 3
+    disc_start: 0
+    disc_loss: hinge
+    disc_ndf: 64
+    disc_num_layers: 3
+    use_actnorm: false
+    disc_factor: 1.0
+    disc_weight: 0.8
+    gen_loss_weight: 0.1
+    lecam_loss_weight: 0.005
+    codebook_weight: 0.1
+    commit_weight: 0.25
+    pixelloss_weight: 1.0
+    perceptual_weight: 1.0
+    codebook_enlarge_ratio: 0
+    codebook_enlarge_steps: 2000
+    num_codebooks: 1
+    codebook_size: 262144
+    sample_minimization_weight: 1.0
+    batch_maximization_weight: 1.0
+    token_factorization: false
+dynamic:
+  class_path: cyber.models.world.dynamic.genie.st_mask_git.STMaskGIT
+  init_args:
+    num_layers: 32
+    num_heads: 8
+    d_model: 256
+    T: 16
+    S: 256
+    image_vocab_size: 262144
+    use_mup: false
+    num_factored_vocabs: 2
+    factored_vocab_size: 512
+    max_corrupt_rate: 0.2
+    non_mlm_ratio: 0.5
+    num_prompt_frames: 8
+    qkv_bias: false
+    proj_bias: true
+    attn_drop: 0
+    qk_norm: false
+    mlp_ratio: 4
+    mlp_drop: 0
+    mlp_bias: true

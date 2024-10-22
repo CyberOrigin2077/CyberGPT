@@ -1,0 +1,46 @@
+input:
+  pointcloud:
+    topic: /habitat/points
+    fields: xyzrgb
+    rotation_matrix: [[0, -1, 0], [0, 0, -1], [1, 0, 0]]
+    floor_height: -0.9
+    ceiling_height: 1.5
+  odometry:
+    topic: /true_pose
+    type: PoseStamped
+  image_front:
+    topic: /habitat/rgb1/image
+    color: rgb
+  image_back:
+    topic: /habitat/rgb3/image
+    color: rgb
+topomap:
+  iou_threshold: 0.3
+  iou_threshold2: 0.35
+  localization_frequency: 3.0
+place_recognition:
+  model: minkloc3d
+  #weights_path: /home/kirill/TopoSLAM/OpenPlaceRecognition/weights/place_recognition/habitat_multimodal_resnet18-gem-seqgem_minkloc3dv2.pth
+  weights_path: /home/kirill/TopoSLAM/OpenPlaceRecognition/weights/place_recognition/minkloc3d_nclt.pth
+  model_config_path: /home/kirill/TopoSLAM/OpenPlaceRecognition/configs/model/place_recognition/resnet18-seqgem_minkloc3dv2.yaml
+  top_k: 5
+scan_matching:
+  model: feature2d
+  detector_type: ORB
+  score_threshold: 0.6
+  outlier_thresholds: [2.5, 1, 0.5, 0.25, 0.25]
+  max_point_cloud_range: 8.0
+  voxel_downsample_size: 0.1
+  min_matches: 5
+scan_matching_along_edge:
+  model: feature2d
+  detector_type: HarrisWithDistance
+  score_threshold: 0.5
+  outlier_thresholds: [2.5, 1, 0.5, 0.25, 0.25]
+  max_point_cloud_range: 8.0
+  voxel_downsample_size: 0.1
+  min_matches: 5
+visualization:
+  publish_gt_map: true
+  map_frame: map
+  publish_tf_from_odom: true

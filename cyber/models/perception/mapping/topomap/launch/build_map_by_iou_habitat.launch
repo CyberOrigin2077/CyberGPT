@@ -1,0 +1,11 @@
+<launch>
+  <arg name="path_to_gt_map" default="/home/kirill/TopoSLAM/GT/2n8kARJN3HM/map_cropped_0_600_300_900.png"/>
+  <arg name="path_to_save_json" default="/home/kirill/TopoSLAM/toposlam_ws/src/simple_toposlam_model/graph_jsons_new/2n8kARJN3HM.json"/>
+  <arg name="config_file" default="habitat_mp3d.yaml"/>
+
+  <node pkg="prism_topomap" type="prism_topomap_node.py" name="prism_topomap_node" output="screen">
+    <param name="path_to_gt_map" value="$(arg path_to_gt_map)"/>
+    <param name="path_to_save_json" value="$(arg path_to_save_json)"/>
+    <param name="config_file" value="$(arg config_file)"/>
+  </node>
+</launch>

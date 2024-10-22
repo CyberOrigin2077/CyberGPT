@@ -1,0 +1,3 @@
+# CYBER World Model
+
+Imagine a robot navigating a cluttered room. For it to operate effectively, it needs to "see" beyond raw images—recognizing objects, understanding spatial relationships, and predicting interactions. Physical Encoding achieves this by converting the robot’s visual input into latent codes. These codes represent a distilled understanding of the physical world, akin to how humans quickly grasp the layout of a room upon entering. For example, if the robot sees a chair, the encoded information isn't just "chair" but also its position, how it might be moved, and its potential use in future tasks. This high-level encoding enables the robot to focus on important environmental features and make smarter decisions.

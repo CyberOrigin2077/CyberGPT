@@ -1,0 +1,44 @@
+input:
+  pointcloud:
+    topic: /velodyne_points
+    fields: xyz
+    rotation_matrix: [[1, 0, 0], [0, 1, 0], [0, 0, 1]]
+    floor_height: -0.9
+    ceiling_height: 1.5
+  odometry:
+    topic: /cartographer/tracked_global_odometry
+    type: Odometry
+  image_front:
+    topic: /zed_node/left/image_rect_color
+    color: rgb
+  image_back:
+    topic: /realsense_back/color/image_raw
+    color: rgb
+topomap:
+  iou_threshold: 0.3
+  localization_frequency: 2.0
+place_recognition:
+  model: mssplace
+  weights_path: /home/kirill/TopoSLAM/OpenPlaceRecognition/weights/place_recognition/habitat_multimodal_resnet18-gem-seqgem_minkloc3dv2.pth
+  model_config_path: /home/kirill/TopoSLAM/OpenPlaceRecognition/configs/model/place_recognition/resnet18-seqgem_minkloc3dv2.yaml
+  top_k: 5
+scan_matching:
+  model: feature2d
+  detector_type: ORB
+  score_threshold: 0.6
+  outlier_thresholds: [2.5, 1, 0.5, 0.25, 0.25]
+  max_point_cloud_range: 15.0
+  voxel_downsample_size: 0.1
+  min_matches: 5
+scan_matching_along_edge:
+  model: feature2d
+  detector_type: HarrisWithDistance
+  score_threshold: 0.5
+  outlier_thresholds: [2.5, 1, 0.5, 0.25, 0.25]
+  max_point_cloud_range: 15.0
+  voxel_downsample_size: 0.1
+  min_matches: 5
+visualization:
+  publish_gt_map: false
+  map_frame: odom
+  publish_tf_from_odom: true

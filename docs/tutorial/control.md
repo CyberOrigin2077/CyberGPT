@@ -1,0 +1,3 @@
+# CYBER Control Model
+
+In traditional systems, teaching a robot to flip a pancake with a spatula might involve countless hours of training on a specific arm model. But what if you wanted the same task done by a different robot with different sensors or arms? Overcoming Heterogeneity within CYBER allows for cross-embodiment learning—the robot learns fundamental skills that are transferable across different platforms. Picture a scenario where a robot trained in a factory on one set of machinery can seamlessly adapt to a new set of machines at a different facility. CYBER achieves this by leveraging shared data and common skill sets, avoiding the need to train each robot from scratch for every new task or embodiment.
