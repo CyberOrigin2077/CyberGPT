@@ -43,7 +43,7 @@ def save_checkpoint(model, optimizer, lr_scheduler, cfg, epoch, filename):
     }, os.path.join(save_path, 'checkpoint.pth'))
 
 
-def main():
+def main():  # noqa: C901
     ##############################################
     # Config
     ##############################################
