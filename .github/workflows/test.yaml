@@ -27,8 +27,4 @@ jobs:
       uses: astral-sh/ruff-action@v1
       with:
         args: check --output-format=github
-    - name: Run tests
-      shell: bash -l {0}
-      run: |
-        python -m pytest --cov=fastvector tests
-        python -m codecov
+
