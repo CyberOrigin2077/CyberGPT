@@ -69,6 +69,8 @@ def main():  # noqa: C901
     val_token_dataset.valid_start_inds = val_token_dataset.valid_start_inds[:12]
 
     latent_side_len, vocab_size, hz = [train_token_dataset.metadata[key] for key in ("s", "vocab_size", "hz")]
+    logging.debug(f"latent_side_len: {latent_side_len}, vocab_size: {vocab_size}, hz: {hz}")
+
     if cfg.mu_transfer:
         world_model.dynamic.set_mup_shapes(rescale_params=True)
         world_model.dynamic.init_weights()
@@ -174,6 +176,8 @@ def main():  # noqa: C901
         if cfg.resume_from_checkpoint is not None or cfg.resume_from_checkpoint != "":
             checkpoint_path = cfg.resume_from_checkpoint
             path = os.path.basename(cfg.resume_from_checkpoint.rstrip("/"))
+            logging.debug(f"Resuming from checkpoint: {cfg.resume_from_checkpoint}")
+            logging.debug(f"Extracted basename: {path}")
         else:
             raise ValueError("Must provide a checkpoint path to resume training from")
 
@@ -235,10 +239,11 @@ def main():  # noqa: C901
                     "train_loss": avg_train_loss,
                     "epoch": epoch,
                     "update_step": completed_steps,
-                    "examples_processed": completed_steps * cfg.per_device_train_batch_size
-                                          * cfg.gradient_accumulation_steps,
+                    "examples_processed": completed_steps * cfg.per_device_train_batch_size * cfg.gradient_accumulation_steps,
                     "learning_rate": lr_scheduler.get_last_lr()[0],
-                })
+                    "batch_time": batch_time,
+                }
+            )
 
             progress_bar.update(1)
             completed_steps += 1
