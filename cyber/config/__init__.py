@@ -1,0 +1,1 @@
+from cyber.config.utils import instantiate_from_config as instantiate_from_config

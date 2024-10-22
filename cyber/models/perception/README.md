@@ -1,0 +1,3 @@
+# CYBER Perception Model
+
+Consider a robot working in a warehouse. As it moves to pick up a box, a worker suddenly enters its path. With Future Prediction, the robot doesn't merely react to the worker's presence—it predicts this interaction before it happens. By combining visual cues (e.g., the movement of the worker) with language tokens (pre-learned descriptions of similar scenarios), the robot forecasts potential outcomes and adjusts its actions preemptively. This is like anticipating a person’s next move in a busy crowd and adjusting your path to avoid a collision. CYBER’s future prediction capability makes the robot proactive, helping it avoid accidents and execute tasks more efficiently.

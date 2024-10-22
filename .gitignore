@@ -7,6 +7,9 @@ __pycache__/
 # C extensions
 *.so
 
+# weights folder
+weights/
+
 # Distribution / packaging
 .Python
 build/
@@ -105,9 +108,6 @@ celerybeat.pid
 # Environments
 .env
 .venv
-env/
-venv/
-ENV/
 env.bak/
 venv.bak/
 
@@ -128,3 +128,22 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+
+.ipynb_checkpoints/
+
+# Weights & Biases
+wandb/
+
+# Environment variables and secrets
+secrets.env
+
+subsample_val.py
+data/
+output/
+test/
+
+.DS_Store
+
+#checkpoints
+*.ckpt

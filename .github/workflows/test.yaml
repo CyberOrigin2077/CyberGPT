@@ -1,0 +1,30 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Conda
+      uses: conda-incubator/setup-miniconda@v3
+      with:
+        auto-update-conda: true
+        python-version: "3.10"
+        activate-environment: cyber
+    - name: Install dependencies
+      shell: bash -l {0}
+      run: |
+        conda install pytorch==2.3.0 torchvision==0.18.0 cudatoolkit=11.1 -c pytorch -c nvidia
+        pip install -r requirements-dev.txt
+        pip install -e .
+    - name: Run Ruff
+      uses: astral-sh/ruff-action@v1
+      with:
+        args: check --output-format=github
+

@@ -1,0 +1,58 @@
+# Model Selection
+encoder:
+    name: MagVIT
+dynamic:
+    name: Genie
+
+# Data
+train_data_dir: "data"  # Directory containing tokenized data, should have a `video.bin`, `metadata.json` and `segment_ids.json`.
+val_data_dir: "data"  # Directory containing tokenized data, should have a `video.bin`, `metadata.json` and `segment_ids.json`.
+window_size: 16  # Number of frames in a sequence.
+stride: 15  # Difference in frame count between consecutive frames in a sequence.
+filter_overlaps: null  # Whether to filter repeated frames in the train dataset (`filter_overlaps` always true for the val set). Filtering essentially makes the training dataset less correlated but ~16x smaller.
+
+# Model
+warmstart_path: null  # A path to a checkpoint to warmstart a model from, possibly not trained on the same dataset, will resize embeddings if needed.
+resume_from_checkpoint: null  # If the training should continue from a checkpoint folder.
+
+# Training
+per_device_train_batch_size: 4  # Batch size (per device) for the training dataloader.
+per_device_eval_batch_size: 4  # Batch size (per device) for the evaluation dataloader.
+gradient_accumulation_steps: 1  # Number of updates steps to accumulate before performing a backward/update pass.
+gradient_checkpointing: false  # Enable gradient checkpointing.
+learning_rate: 1.0e-4  # Initial learning rate (after the potential warmup period) to use.
+weight_decay: 0.0  # Weight decay to use.
+num_train_epochs: 1  # Total number of training epochs to perform.
+max_train_steps: null  # Total number of training steps to perform. If provided, overrides num_train_epochs.
+max_eval_steps: 10000000000  # Only evaluate on `max_eval_steps` batches of validation data per process, faster.
+eval_every_n_steps: 1000  # Eval every N training steps.
+vis_every_n_steps: 1000  # Visualize every N training steps.
+lr_scheduler_type: "linear"  # The scheduler type to use.
+num_warmup_steps: 0  # Number of steps for the warmup in the lr scheduler.
+max_grad_norm: 1.0  # Threshold to clip gradients.
+attention_dropout: 0.0  # Attention dropout prob.
+adam_beta_1: 0.9  
+adam_beta_2: 0.999  
+adam_eps: 1.0e-8  
+
+# Misc
+output_dir: "weights"  # Where to store the model checkpoints.
+checkpointing_steps: "1000"  # Whether the various states should be saved at the end of every n steps, or 'epoch' for each epoch.
+seed: 42  # A seed for reproducible training.
+overfit_first_batch: false  # Debug option that trains and validates on only the first batch of the training dataset.
+report_to: "wandb"  # The integration to report the results and logs to.
+mu_transfer: false  # If specified, will train with mu transfer reparametrizations. Only supports Llama models.
+no_compile: false  # If specified, will not compile the model.
+
+# Description
+description: "Train a spatial-temporal MaskGIT-style model on video generation."
+
+# Choices for lr_scheduler_type
+lr_scheduler_choices:
+  - "linear"
+  - "cosine"
+  - "cosine_with_restarts"
+  - "polynomial"
+  - "constant"
+  - "constant_with_warmup"
+  - "custom_cosine"
