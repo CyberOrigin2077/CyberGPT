@@ -24,6 +24,7 @@ def instantiate_from_config(config: OmegaConf):
         raise KeyError("Expected key `class_path` to instantiate.")
     return get_obj_from_str(config["class_path"])(config.get("init_args", dict()))  # noqa: C408
 
+
 def get_function_from_str(string):
     module, func = string.rsplit(".", 1)
     return getattr(importlib.import_module(module, package=None), func)
